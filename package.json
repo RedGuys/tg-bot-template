@@ -1,0 +1,23 @@
+{
+  "name": "tg-bot-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "init": "node init.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "log4js": "^6.9.1",
+    "pg": "^8.11.3",
+    "rgcache": "^1.0.9",
+    "telegraf": "3.38",
+    "telegraf-session-local": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.10.7"
+  }
+}
