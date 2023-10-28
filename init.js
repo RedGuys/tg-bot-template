@@ -33,6 +33,11 @@ async function run(command) {
     console.log("Dependencies installed!");
     const pg = require('pg');
     let token = await ask("Enter your bot token: ");
+    let dbUser;
+    let dbPassword;
+    let dbName;
+    let dbHost;
+    let dbPort;
     while (true) {
         let dbUser = await ask("Enter your database user: ");
         let dbPassword = await ask("Enter your database password: ");
