@@ -56,7 +56,9 @@ async function run(command) {
             console.log("Error connecting to database: " + e.message);
         }
     }
-    fs.mkdirSync(".idea/runConfigurations");
+    try {
+        fs.mkdirSync(".idea/runConfigurations");
+    } catch (e) {}
     fs.writeFileSync(".idea/runConfigurations/start.xml", `<component name="ProjectRunConfigurationManager">
   <configuration default="false" name="start" type="js.build_tools.npm" nameIsGenerated="true">
     <package-json value="$PROJECT_DIR$/package.json" />
