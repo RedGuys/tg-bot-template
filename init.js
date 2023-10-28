@@ -39,11 +39,11 @@ async function run(command) {
     let dbHost;
     let dbPort;
     while (true) {
-        let dbUser = await ask("Enter your database user: ");
-        let dbPassword = await ask("Enter your database password: ");
-        let dbName = await ask("Enter your database name: ");
-        let dbHost = await ask("Enter your database host: ");
-        let dbPort = await ask("Enter your database port: ");
+        dbUser = await ask("Enter your database user: ");
+        dbPassword = await ask("Enter your database password: ");
+        dbName = await ask("Enter your database name: ");
+        dbHost = await ask("Enter your database host: ");
+        dbPort = await ask("Enter your database port: ");
         //try to connect to database
         let client = new pg.Client({
             connectionString: `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`
