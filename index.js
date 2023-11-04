@@ -48,3 +48,15 @@ bot.start(async (ctx) => await ctx.scene.enter('example'));
 
 bot.startPolling();
 logger.log("Bot started!");
+
+bot.catch((err) => {
+    logger.error(err);
+});
+
+process.on('uncaughtException', function (err) {
+    logger.error(err);
+});
+
+process.on('unhandledRejection', function (err) {
+    logger.error(err);
+});
