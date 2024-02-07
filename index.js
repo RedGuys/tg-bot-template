@@ -13,45 +13,18 @@ log4js.configure({
     }, categories: {default: {appenders: ['out'], level: 'info'}}
 });
 
-bot.use(async (ctx, next) => {
-    let start = new Date();
-    await next();
-    let ms = new Date() - start;
-    try {
-        if (ctx.message && ctx.message.text && ctx.message.text.startsWith("/")) {
-            logger.log("Command " + ctx.message.text.split(" ")[0].substring(1) + " processed in " + ms + "ms");
-        }
-        if (ctx.message && ctx.message.voice) {
-            logger.log("Voice " + ctx.message.voice.file_id + " processed in " + ms + "ms");
-        }
-        if (ctx.message && ctx.message.video_note) {
-            logger.log("Video note " + ctx.message.video_note.file_id + " processed in " + ms + "ms");
-        }
-        if (ctx.callbackQuery && ctx.callbackQuery.data) {
-            logger.log("Callback " + ctx.callbackQuery.data + " processed in " + ms + "ms");
-        }
-        if (ctx.inlineQuery) {
-            logger.log("Inline " + ctx.inlineQuery.query + " processed in " + ms + "ms");
-        }
-    } catch (e) {
-        logger.log(e)
-    }
-});
-
+bot.catch((err) => logger.error(err));
+bot.use(require("./handlers/log")(bot));
 bot.use((new LocalSession({storage: LocalSession.storageMemory})).middleware());
 
 let stage = new Stage();
 stage.register(require("./scenes/example"));
 bot.use(stage.middleware());
 
-bot.start(async (ctx) => await ctx.scene.enter('example'));
+bot.start(require("./commands/start")(bot));
 
 bot.startPolling();
 logger.log("Bot started!");
-
-bot.catch((err) => {
-    logger.error(err);
-});
 
 process.on('uncaughtException', function (err) {
     logger.error(err);
