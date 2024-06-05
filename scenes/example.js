@@ -1,13 +1,12 @@
 const Scene = require('telegraf').BaseScene;
-const Database = require('../Database');
 
 let scene = new Scene('example');
 
 scene.enter(async (ctx) => {
-    await ctx.reply('Текст при входе в сцену', {
+    await ctx.reply('Text on scene start', {
         reply_markup: {
             inline_keyboard: [
-                [{text:"Выход", callback_data: "exit"}]
+                [{text:"Close", callback_data: "exit"}]
             ]
         }
     });
@@ -15,15 +14,15 @@ scene.enter(async (ctx) => {
 
 scene.action('exit', async (ctx) => {
     await ctx.scene.leave();
-    await ctx.reply('Редактирование персонажа завершено!');
+    await ctx.editMessageText('Scene closed');
     await ctx.answerCbQuery();
 });
 
 scene.on('text', async (ctx) => {
-    await ctx.reply('Текст при вводе текста', {
+    await ctx.reply('Text inputted: '+ctx.message.text, {
         reply_markup: {
             inline_keyboard: [
-                [{text:"Выход", callback_data: "exit"}]
+                [{text:"Close", callback_data: "exit"}]
             ]
         }
     });
