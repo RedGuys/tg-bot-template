@@ -1,7 +1,7 @@
-const Telegraf = require('telegraf');
+const Telegraf = require('regraf');
 const bot = new Telegraf(process.env.TOKEN);
-const LocalSession = require('telegraf-session-local');
-const Stage = require("telegraf/stage");
+const LocalSession = require('@regraf/session-local');
+const Stage = require("regraf/stage");
 const Database = require("./Database");
 const log4js = require('log4js');
 const logger = log4js.getLogger("Main");

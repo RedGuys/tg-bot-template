@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@regraf/session-local": "^2.1.1",
     "log4js": "^6.9.1",
     "pg": "^8.11.3",
-    "rgcache": "^1.0.9",
-    "telegraf": "3.38",
-    "telegraf-session-local": "^2.1.1"
+    "regraf": "^1.1.6",
+    "rgcache": "^1.0.9"
   },
   "devDependencies": {
     "@types/pg": "^8.10.7"

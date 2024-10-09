@@ -1,4 +1,4 @@
-const Scene = require('telegraf').BaseScene;
+const Scene = require('regraf').BaseScene;
 
 let scene = new Scene('example');
 
